@@ -1,0 +1,32 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+.env
+
+# React app
+# dependencies
+/public/app/node_modules
+
+# testing
+/public/app/coverage
+
+# production
+/public/app/build
+
+# misc
+/public/app/.DS_Store
+/public/app/.env.local
+/public/app/.env.development.local
+/public/app/.env.test.local
+/public/app/.env.production.local
+
+/public/app/npm-debug.log*
+/public/app/yarn-debug.log*
+/public/app/yarn-error.log*
