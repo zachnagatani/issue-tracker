@@ -12,7 +12,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Ztogy Maloggy",
-                    "customer-email": "aelloyurevich0@cnn.com",
+                    "customerEmail": "aelloyurevich0@cnn.com",
                     "description": "sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": false,
                     "openedAt": "08/09/2016",
@@ -24,7 +24,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdf in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": false,
                     "openedAt": "06/01/2016",
@@ -36,7 +36,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Leo Dio",
-                    "customer-email": "ldd@aol.com",
+                    "customerEmail": "ldd@aol.com",
                     "description": "yallsuck lentesque eget",
                     "status": true,
                     "openedAt": "07/01/2016",
@@ -48,7 +48,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": true,
                     "openedAt": "01/02/2017",
@@ -60,7 +60,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": true,
                     "openedAt": "01/02/2017",
@@ -72,7 +72,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": true,
                     "openedAt": "01/02/2017",
@@ -84,7 +84,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": true,
                     "openedAt": "01/02/2017",
@@ -96,7 +96,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": true,
                     "openedAt": "01/02/2017",
@@ -108,7 +108,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": true,
                     "openedAt": "01/02/2017",
@@ -120,7 +120,7 @@ export default function IssuesTable(props) {
                 "type": "issue",
                 "attributes": {
                     "customerName": "Sargent Guichard",
-                    "customer-email": "byurevich0@cnn.com",
+                    "customerEmail": "byurevich0@cnn.com",
                     "description": "sapiendsfdsfsdivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget",
                     "status": true,
                     "openedAt": "01/02/2017",
@@ -134,7 +134,9 @@ export default function IssuesTable(props) {
     const rows = issues.data.map(issue => {
         return <IssuesTableRow
                     key={issue.id}
+                    id={issue.id}
                     customerName={issue.attributes.customerName}
+                    customerEmail={issue.attributes.customerEmail}
                     description={issue.attributes.description}
                     status={issue.attributes.status}
                     openedDate={issue.attributes.openedAt}
