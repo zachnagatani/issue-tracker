@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { fetchIssues } from '../../actions/actions';
+
 import IssuesTable from '../IssuesTable/IssuesTable';
 
 const mapStateToProps = state => {
@@ -9,8 +11,17 @@ const mapStateToProps = state => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchIssues: () => {
+            dispatch(fetchIssues())
+        }
+    }
+};
+
 const Issues = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(IssuesTable);
 
 export default Issues;

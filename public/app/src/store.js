@@ -1,9 +1,16 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
+import rootSaga from './sagas/sagas';
 import issueTracker from './reducers/issueTracker';
 
+const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(issueTracker);
+const store = createStore(
+    issueTracker,
+    applyMiddleware(sagaMiddleware)
+);
 
-console.log(store.getState());
+sagaMiddleware.run(rootSaga);
 
 export default store;
