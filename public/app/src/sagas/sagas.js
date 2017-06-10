@@ -9,7 +9,7 @@ import * as types from '../actions/actionTypes';
  * dispatches an ADD_ISSUES action with the issues on success
  */
 export function *getIssues() {
-    const issues = yield call(fetchIssues, fetch, '/issues.json');
+    const issues = yield call(fetchIssues, fetch, '/api/issues');
     yield put(addIssues(issues.data));
 }
 
@@ -25,7 +25,7 @@ export function *watchGetIssues() {
  * dispatches an ADD_ISSUES action with the issues on success
  */
 export function *getSingleIssue(action) {
-    const issue = yield call(fetchSingleIssue, fetch, '/issues.json', action.payload.id);
+    const issue = yield call(fetchSingleIssue, fetch, '/api/issues', action.payload.id);
     yield put(addSingleIssue(issue));
 }
 
