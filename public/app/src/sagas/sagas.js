@@ -20,11 +20,18 @@ export function *watchGetIssues() {
     yield takeEvery(types.FETCH_ISSUES, getIssues);
 }
 
+/**
+ * Calls fetchSingleIssue to grab the issues from the database and eventually
+ * dispatches an ADD_ISSUES action with the issues on success
+ */
 export function *getSingleIssue(action) {
     const issue = yield call(fetchSingleIssue, fetch, '/issues.json', action.payload.id);
     yield put(addSingleIssue(issue));
 }
 
+/**
+ * Calls getSingleIssue whenever a FETCH_ISSUES action is dispatched
+ */
 export function *watchGetSingleIssue() {
     yield takeEvery(types.FETCH_SINGLE_ISSUE, getSingleIssue);
 }
