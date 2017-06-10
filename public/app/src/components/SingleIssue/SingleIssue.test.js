@@ -18,11 +18,15 @@ const issue = {
             }
         };
 
+const fetchSingleIssueStub = (id) => {
+  return issue;
+};
+
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-      <SingleIssue issue={issue} />
+      <SingleIssue issue={issue} match={{ params: { id: 5 } }} fetchSingleIssue={fetchSingleIssueStub}/>
     </BrowserRouter>,
     div
   );

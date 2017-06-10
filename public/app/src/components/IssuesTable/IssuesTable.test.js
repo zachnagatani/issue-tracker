@@ -131,11 +131,15 @@ const issues =
         ]
     };
 
+const fetchIssuesStub = () => {
+    return issues;
+};
+
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-      <IssuesTable issues={issues.data}/>
+      <IssuesTable issues={issues.data} fetchIssues={fetchIssuesStub} />
     </BrowserRouter>,
     div
   );
