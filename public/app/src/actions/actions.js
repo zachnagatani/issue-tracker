@@ -15,4 +15,25 @@ function addIssues(issues) {
     };
 }
 
-export { fetchIssues, addIssues };
+function fetchSingleIssue(id) {
+    return {
+        type: types.FETCH_SINGLE_ISSUE,
+        payload: {
+            id
+        }
+    };
+}
+
+function addSingleIssue(issue) {
+    return {
+        type: types.ADD_SINGLE_ISSUE,
+        payload: {
+            issue
+        }
+    };
+}
+
+export {
+    fetchIssues, addIssues,
+    fetchSingleIssue, addSingleIssue
+};

@@ -1,7 +1,8 @@
 import { call, put, takeEvery, all } from 'redux-saga/effects';
 
-import { fetchIssues } from '../helpers/helpers';
-import { addIssues } from '../actions/actions';
+import { fetchIssues, fetchSingleIssue } from '../helpers/helpers';
+import { addIssues, addSingleIssue } from '../actions/actions';
+import * as types from '../actions/actionTypes';
 
 /**
  * Calls fetchIssues to grab the issues from the database and eventually
@@ -16,7 +17,16 @@ export function *getIssues() {
  * Calls getIssues whenever a FETCH_ISSUES action is dispatched
  */
 export function *watchGetIssues() {
-    yield takeEvery('FETCH_ISSUES', getIssues);
+    yield takeEvery(types.FETCH_ISSUES, getIssues);
+}
+
+export function *getSingleIssue(action) {
+    const issue = yield call(fetchSingleIssue, fetch, '/issues.json', action.payload.id);
+    yield put(addSingleIssue(issue));
+}
+
+export function *watchGetSingleIssue() {
+    yield takeEvery(types.FETCH_SINGLE_ISSUE, getSingleIssue);
 }
 
 /**
@@ -24,6 +34,7 @@ export function *watchGetIssues() {
  */
 export default function *rootSaga() {
     yield all([
-        watchGetIssues()
+        watchGetIssues(),
+        watchGetSingleIssue()
     ]);
 }

@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import issuesReducer from './issuesReducer';
+import { issuesReducer, singleIssueReducer } from './issuesReducer';
 
 const issueTracker = combineReducers({
-    issues: issuesReducer
+    issues: issuesReducer,
+    singleIssue: singleIssueReducer
 });
 
 export default issueTracker;

@@ -1,19 +1,26 @@
 import { connect } from 'react-redux';
 
-import SingleIssue from '../SingleIssue/SingleIssue';
+import { fetchSingleIssue } from '../../actions/actions';
 
-function getSingleIssue(issues, id) {
-    return issues.filter(item => item.id === id)[0];
-}
+import SingleIssue from '../SingleIssue/SingleIssue';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        issue: getSingleIssue(state.issues, ownProps.match.params.id)
+        issue: state.singleIssue
+    };
+};
+
+const mapStateToDispatch = dispatch => {
+    return {
+        fetchSingleIssue: (id) => {
+            dispatch(fetchSingleIssue(id))
+        }
     };
 };
 
 const SingleIssueContainer = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapStateToDispatch
 )(SingleIssue);
 
 export default SingleIssueContainer;
