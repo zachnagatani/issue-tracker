@@ -1,7 +1,7 @@
 import { call, put, takeEvery, all } from 'redux-saga/effects';
 
-import { fetchIssues, fetchSingleIssue } from '../helpers/helpers';
-import { addIssues, addSingleIssue } from '../actions/actions';
+import { fetchIssues, fetchSingleIssue, closeIssueDB } from '../helpers/helpers';
+import { addIssues, addSingleIssue, closeIssue } from '../actions/actions';
 import * as types from '../actions/actionTypes';
 
 /**
@@ -36,12 +36,22 @@ export function *watchGetSingleIssue() {
     yield takeEvery(types.FETCH_SINGLE_ISSUE, getSingleIssue);
 }
 
+export function *closeIssueSaga(action) {
+    const response = yield call(closeIssueDB, fetch, '/api/issues/close', action.payload.id, window.Laravel);
+    yield put(closeIssue(action.payload.id));
+}
+
+export function *watchCloseIssueSaga() {
+    yield takeEvery(types.CLOSE_ISSUE_REQUEST, closeIssueSaga);
+}
+
 /**
  * Combines our sagas together to be passed as a group to the middleware
  */
 export default function *rootSaga() {
     yield all([
         watchGetIssues(),
-        watchGetSingleIssue()
+        watchGetSingleIssue(),
+        watchCloseIssueSaga()
     ]);
 }

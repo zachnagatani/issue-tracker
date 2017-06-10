@@ -33,3 +33,20 @@ export function filterSingleIssue(issues, id) {
 
     return issues.filter(item => item.id === id)[0];
 }
+
+
+export function closeIssueDB(fetch, URL, id, token) {
+    const formData = new FormData();
+    formData.append('_token', token);
+
+    return fetch(`${URL}/${id}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'X-CSRF-Token': token
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(response => response);
+}

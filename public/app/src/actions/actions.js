@@ -33,7 +33,26 @@ function addSingleIssue(issue) {
     };
 }
 
+function closeIssueRequest(id) {
+    return {
+        type: types.CLOSE_ISSUE_REQUEST,
+        payload: {
+            id
+        }
+    };
+}
+
+function closeIssue(id) {
+    return {
+        type: types.CLOSE_ISSUE,
+        payload: {
+            id
+        }
+    };
+}
+
 export {
     fetchIssues, addIssues,
-    fetchSingleIssue, addSingleIssue
+    fetchSingleIssue, addSingleIssue,
+    closeIssueRequest, closeIssue
 };
