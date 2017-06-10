@@ -11,6 +11,51 @@ use DB;
 
 class IssuesController extends Controller
 {
+    public function getAll(Request $request, Response $response) {
+        $issues = json_decode(Db::table('issues')->orderBy('status', 'desc')->get());
+        $JSONissues = array('data' => array());
+
+        foreach($issues as $issue) {
+            array_push(
+                $JSONissues['data'],
+                array(
+                    'id' => $issue->id,
+                    'type' => 'issue',
+                    'attributes' => array(
+                        'customerName' => $issue->customer_name,
+                        'customerEmail' => $issue->customer_email,
+                        'description' => $issue->description,
+                        'status' => $issue->status,
+                        'openedAt' => $issue->opened_at,
+                        'closedAt' => $issue->closed_at
+                    )
+                )
+            );
+        }
+
+        return response()->json($JSONissues);
+    }
+
+    public function getSingle(Request $request, Response $response) {
+        $issue = Db::table('issues')->where('id', $request->id)->first();
+        $JSONissue = array(
+            'data' => array(
+                'id' => $issue->id,
+                'type' => 'issue',
+                'attributes' => array(
+                    'customerName' => $issue->customer_name,
+                    'customerEmail' => $issue->customer_email,
+                    'description' => $issue->description,
+                    'status' => $issue->status,
+                    'openedAt' => $issue->opened_at,
+                    'closedAt' => $issue->closed_at
+                )
+            )
+        );
+
+        return json_encode($JSONissue);
+    }
+
     public function add(Request $request) {
         try {
             $user = Auth::user();
@@ -32,29 +77,21 @@ class IssuesController extends Controller
         }
     }
 
-    public function getAll(Request $request, Response $response) {
-        $issues = json_decode(Db::table('issues')->get());
-        $JSONissues = array('data' => array());
+    public function close(Request $request, Response $response) {
+        try {
+            Db::table('issues')
+                ->where('id', $request->id)
+                ->update(['status' => false]);
 
-        foreach($issues as $issue) {
-            array_push(
-                $JSONissues['data'],
-                array(
-                    'id' => $issue->id,
-                    'type' => 'issue',
-                    'attributes' => array(
-                        'customer-name' => $issue->customer_name,
-                        'customer-email' => $issue->customer_email,
-                        'description' => $issue->description,
-                        'status' => $issue->status,
-                        'opened-at' => $issue->opened_at,
-                        'closed-at' => $issue->closed_at,
-                        'handling-employee' => $issue->handling_employee
-                    )
+            return json_encode(array(
+                'data' => array(
+                    'message' => 'Issue closed',
+                    'success' => true,
+                    'error' => false
                 )
-            );
+            ));
+        } catch (Exception $e) {
+            return $e;
         }
-
-        return response()->json($JSONissues);
     }
 }
