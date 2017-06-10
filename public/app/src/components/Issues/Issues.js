@@ -1,11 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import IssuesTable from '../IssuesTable/IssuesTable';
 
-export default function Issues(props) {
-    return (
-        <div>
-            <IssuesTable></IssuesTable>
-        </div>
-    );
+const mapStateToProps = state => {
+    return {
+        issues: state.issues
+    };
 };
+
+const Issues = connect(
+    mapStateToProps
+)(IssuesTable);
+
+export default Issues;
