@@ -1,10 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Issues from '../Issues/Issues';
+import SingleIssue from '../SingleIssue/SingleIssue';
 
 export default function Main(props) {
     return (
-        <Route path="/issues" component={Issues} />
+        <main>
+            <Route exact path="/issues" component={Issues} />
+            <Route path="/issues/:id" component={SingleIssue} />
+        </main>
     );
 };
