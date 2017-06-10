@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Laravel = window.Laravel || null;
+import Form from '../Form/Form';
 
 export default function Sidebar(props) {
     return (
@@ -19,9 +19,9 @@ export default function Sidebar(props) {
                             document.getElementById('token-input').value = window.Laravel;
                             document.getElementById('logout-form').submit();
                         }}>Logout</a>
-                    <form id="logout-form" action="/logout" method="POST" style={{ display: 'none' }}>
+                    <Form id="logout-form" action="/logout" method="POST" style={{ display: 'none' }}>
                         <input type="hidden" id="token-input" name="_token" />
-                    </form>
+                    </Form>
                 </li>
             </ul>
         </nav>

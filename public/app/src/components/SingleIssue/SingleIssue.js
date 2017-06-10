@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Form from '../Form/Form';
+
 export default class SingleIssue extends React.Component {
     componentDidMount() {
         this.props.fetchSingleIssue(this.props.match.params.id);
+        this.closeIssue = this.closeIssue.bind(this);
+    }
+
+    closeIssue(id) {
+        document.getElementById('token-input-close').value = window.Laravel;
+        document.getElementById('close-issue-form').submit();
     }
 
     render() {
@@ -24,7 +32,11 @@ export default class SingleIssue extends React.Component {
                         <p className="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, animi, omnis magni error in id nulla illum nisi iure, enim debitis voluptates doloremque neque deserunt quasi expedita accusantium! Cupiditate, dolor.</p>
 
                         <div className="expanded button-group">
-                            <button type="button" className="primary button">Close Issue</button>
+                            <button type="button" className="primary button" onClick={() => this.closeIssue(this.props.issue.id)}>Close Issue</button>
+                            <Form id="close-issue-form" action={`/api/issues/close/${this.props.match.params.id}`} method="POST">
+                                <input type="hidden" id="token-input-close" name="_token" />
+                            </Form>
+
                             <Link to="/issues" type="button" className="secondary button">Back to Issues</Link>
                         </div>
                     </div>
