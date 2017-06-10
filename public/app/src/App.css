@@ -4048,6 +4048,14 @@ main {
   height: calc(100% - 65px);
   overflow-y: scroll; }
 
+td {
+  text-align: center;
+}
+
+.table-description {
+  text-align: left;
+}
+
 .issue-heading {
   display: table-cell;
   background: #545454;

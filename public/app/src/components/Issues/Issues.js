@@ -1,9 +1,11 @@
 import React from 'react';
 
+import IssuesTable from '../IssuesTable/IssuesTable';
+
 export default function Issues(props) {
     return (
         <div>
-            Issues!
+            <IssuesTable></IssuesTable>
         </div>
     );
 };
