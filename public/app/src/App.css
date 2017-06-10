@@ -4073,3 +4073,25 @@ td {
 
 .sort-footer__param {
   font-weight: normal; }
+
+.issue-container {
+  height: 100%;
+  display: flex;
+}
+
+.card {
+  width: 50%;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .card {
+    width: 75%;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    width: 90%;
+  }
+}
