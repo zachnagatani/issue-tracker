@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "react-dom": "^15.5.4",
     "react-scripts": "1.0.7",
     "redux-logger": "^3.0.6"
   },
